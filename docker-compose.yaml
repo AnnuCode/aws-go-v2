@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  database:
+    image: amazon/dynamodb-local
+    container_name: db
+    networks:
+      - appnet
+   
+
+  iotd:
+    depends_on:
+      - database
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rest-server
+    networks:
+      - appnet
+    ports: 
+      - 5000:5000
+
+networks:
+  appnet:
+    external:
+      name: mynet
