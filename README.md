@@ -9,3 +9,7 @@ This project is work in progress.
 - [ ] write tests for http handlers and Dynamdb operation functions using AWS SDK Go V2.
 - [ ] Implement CI using Travis CI
 
+### Steps to run the application
+- After cloning the app, run `docker network create -d bridge mynet` to create a network on which the DynamoDB container and server container can connect upon.
+- Run `docker compose up --build` to start the app. 
+- Test the endpoints at `http://127.0.0.1/secret` and `http://127.0.0.1/health`. 
